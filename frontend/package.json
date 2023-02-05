@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "proxy": "http://localhost:8000/",
+  "proxy": "http://127.0.0.1:8000/",
   "scripts": {
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
@@ -25,6 +25,7 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "parcel": "^1.12.3",
+    "parcel-bundler": "^1.12.3",
     "prettier": "^2.2.1"
   },
   "dependencies": {

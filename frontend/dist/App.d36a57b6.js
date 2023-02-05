@@ -33107,79 +33107,7 @@ if ("development" === 'production') {
     }
   };
 }
-},{"react-dom":"../node_modules/react-dom/index.js"}],"../node_modules/parcel/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-
-  return bundleURL;
-}
-
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../node_modules/parcel/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel/src/builtins/bundle-url.js"}],"Components/sharedComponents/navMenu.css":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel/src/builtins/css-loader.js"}],"../node_modules/react/cjs/react-jsx-runtime.development.js":[function(require,module,exports) {
+},{"react-dom":"../node_modules/react-dom/index.js"}],"../node_modules/react/cjs/react-jsx-runtime.development.js":[function(require,module,exports) {
 /**
  * @license React
  * react-jsx-runtime.development.js
@@ -34474,60 +34402,7 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-jsx-runtime.development.js');
 }
-},{"./cjs/react-jsx-runtime.development.js":"../node_modules/react/cjs/react-jsx-runtime.development.js"}],"Components/sharedComponents/NavMenu.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-require("./navMenu.css");
-
-var _jsxRuntime = require("react/jsx-runtime");
-
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-var NavMenu = function NavMenu(_ref) {
-  var changeTheStateOfSomething = _ref.changeTheStateOfSomething;
-
-  var _useState = (0, _react.useState)(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      value = _useState2[0],
-      setValue = _useState2[1];
-
-  return (
-    /*#__PURE__*/
-    (0, _jsxRuntime.jsx)("div", {
-      onClick: function onClick() {
-        changeTheStateOfSomething(value);
-        setValue(!value);
-      },
-      className: "nav",
-      children: "navMenu"
-    })
-  );
-};
-
-var _default = NavMenu;
-exports.default = _default;
-},{"react":"../node_modules/react/index.js","./navMenu.css":"Components/sharedComponents/navMenu.css","react/jsx-runtime":"../node_modules/react/jsx-runtime.js"}],"Components/sharedComponents/WeirdComponent.js":[function(require,module,exports) {
+},{"./cjs/react-jsx-runtime.development.js":"../node_modules/react/cjs/react-jsx-runtime.development.js"}],"components/shared/Footer.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34537,43 +34412,482 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _reactDom = require("react-dom");
-
 var _jsxRuntime = require("react/jsx-runtime");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var WeirdComponent = function WeirdComponent() {
+var Footer = function Footer() {
   return (
     /*#__PURE__*/
-    (0, _jsxRuntime.jsx)("div", {
-      children: "WeirdComponent"
+    (0, _jsxRuntime.jsx)("footer", {
+      className: "border-top",
+      children:
+      /*#__PURE__*/
+      (0, _jsxRuntime.jsx)("div", {
+        className: "container px-4 px-lg-5",
+        children:
+        /*#__PURE__*/
+        (0, _jsxRuntime.jsx)("div", {
+          className: "row gx-4 gx-lg-5 justify-content-center",
+          children:
+          /*#__PURE__*/
+          (0, _jsxRuntime.jsxs)("div", {
+            className: "col-md-10 col-lg-8 col-xl-7",
+            children: [
+            /*#__PURE__*/
+            (0, _jsxRuntime.jsxs)("ul", {
+              className: "list-inline text-center",
+              children: [
+              /*#__PURE__*/
+              (0, _jsxRuntime.jsx)("li", {
+                className: "list-inline-item",
+                children:
+                /*#__PURE__*/
+                (0, _jsxRuntime.jsx)("a", {
+                  href: "#!",
+                  children:
+                  /*#__PURE__*/
+                  (0, _jsxRuntime.jsxs)("span", {
+                    className: "fa-stack fa-lg",
+                    children: [
+                    /*#__PURE__*/
+                    (0, _jsxRuntime.jsx)("i", {
+                      className: "fas fa-circle fa-stack-2x"
+                    }),
+                    /*#__PURE__*/
+                    (0, _jsxRuntime.jsx)("i", {
+                      className: "fab fa-twitter fa-stack-1x fa-inverse"
+                    })]
+                  })
+                })
+              }),
+              /*#__PURE__*/
+              (0, _jsxRuntime.jsx)("li", {
+                className: "list-inline-item",
+                children:
+                /*#__PURE__*/
+                (0, _jsxRuntime.jsx)("a", {
+                  href: "#!",
+                  children:
+                  /*#__PURE__*/
+                  (0, _jsxRuntime.jsxs)("span", {
+                    className: "fa-stack fa-lg",
+                    children: [
+                    /*#__PURE__*/
+                    (0, _jsxRuntime.jsx)("i", {
+                      className: "fas fa-circle fa-stack-2x"
+                    }),
+                    /*#__PURE__*/
+                    (0, _jsxRuntime.jsx)("i", {
+                      className: "fab fa-facebook-f fa-stack-1x fa-inverse"
+                    })]
+                  })
+                })
+              }),
+              /*#__PURE__*/
+              (0, _jsxRuntime.jsx)("li", {
+                className: "list-inline-item",
+                children:
+                /*#__PURE__*/
+                (0, _jsxRuntime.jsx)("a", {
+                  href: "#!",
+                  children:
+                  /*#__PURE__*/
+                  (0, _jsxRuntime.jsxs)("span", {
+                    className: "fa-stack fa-lg",
+                    children: [
+                    /*#__PURE__*/
+                    (0, _jsxRuntime.jsx)("i", {
+                      className: "fas fa-circle fa-stack-2x"
+                    }),
+                    /*#__PURE__*/
+                    (0, _jsxRuntime.jsx)("i", {
+                      className: "fab fa-github fa-stack-1x fa-inverse"
+                    })]
+                  })
+                })
+              })]
+            }),
+            /*#__PURE__*/
+            (0, _jsxRuntime.jsx)("div", {
+              className: "small text-center text-muted fst-italic",
+              children: "Copyright \xA9 Aymen Sakouhi - 2022"
+            })]
+          })
+        })
+      })
     })
   );
 };
 
-var _default = WeirdComponent;
+var _default = Footer;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","react/jsx-runtime":"../node_modules/react/jsx-runtime.js"}],"App.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react/jsx-runtime":"../node_modules/react/jsx-runtime.js"}],"components/shared/Navigation.js":[function(require,module,exports) {
 "use strict";
 
-var _react = _interopRequireWildcard(require("react"));
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
 
-var _client = require("react-dom/client");
-
-var _reactDom = require("react-dom");
-
-var _NavMenu = _interopRequireDefault(require("./Components/sharedComponents/NavMenu"));
-
-var _WeirdComponent = _interopRequireDefault(require("./Components/sharedComponents/WeirdComponent"));
+var _react = _interopRequireDefault(require("react"));
 
 var _jsxRuntime = require("react/jsx-runtime");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+var Navigation = function Navigation() {
+  return (
+    /*#__PURE__*/
+    (0, _jsxRuntime.jsx)("nav", {
+      className: "navbar navbar-expand-lg navbar-light",
+      id: "mainNav",
+      children:
+      /*#__PURE__*/
+      (0, _jsxRuntime.jsxs)("div", {
+        className: "container px-4 px-lg-5",
+        children: [
+        /*#__PURE__*/
+        (0, _jsxRuntime.jsx)("a", {
+          className: "navbar-brand",
+          href: "index.html",
+          children: "My Blog"
+        }),
+        /*#__PURE__*/
+        (0, _jsxRuntime.jsxs)("button", {
+          className: "navbar-toggler",
+          type: "button",
+          "data-bs-toggle": "collapse",
+          "data-bs-target": "#navbarResponsive",
+          "aria-controls": "navbarResponsive",
+          "aria-expanded": "false",
+          "aria-label": "Toggle navigation",
+          children: ["Menu",
+          /*#__PURE__*/
+          (0, _jsxRuntime.jsx)("i", {
+            className: "fas fa-bars"
+          })]
+        }),
+        /*#__PURE__*/
+        (0, _jsxRuntime.jsx)("div", {
+          className: "collapse navbar-collapse",
+          id: "navbarResponsive",
+          children:
+          /*#__PURE__*/
+          (0, _jsxRuntime.jsxs)("ul", {
+            className: "navbar-nav ms-auto py-4 py-lg-0",
+            children: [
+            /*#__PURE__*/
+            (0, _jsxRuntime.jsx)("li", {
+              className: "nav-item",
+              children:
+              /*#__PURE__*/
+              (0, _jsxRuntime.jsx)("a", {
+                className: "nav-link px-lg-3 py-3 py-lg-4",
+                href: "index.html",
+                children: "Home"
+              })
+            }),
+            /*#__PURE__*/
+            (0, _jsxRuntime.jsx)("li", {
+              className: "nav-item",
+              children:
+              /*#__PURE__*/
+              (0, _jsxRuntime.jsx)("a", {
+                className: "nav-link px-lg-3 py-3 py-lg-4",
+                href: "about.html",
+                children: "About"
+              })
+            }),
+            /*#__PURE__*/
+            (0, _jsxRuntime.jsx)("li", {
+              className: "nav-item",
+              children:
+              /*#__PURE__*/
+              (0, _jsxRuntime.jsx)("a", {
+                className: "nav-link px-lg-3 py-3 py-lg-4",
+                href: "post.html",
+                children: "Sample Post"
+              })
+            }),
+            /*#__PURE__*/
+            (0, _jsxRuntime.jsx)("li", {
+              className: "nav-item",
+              children:
+              /*#__PURE__*/
+              (0, _jsxRuntime.jsx)("a", {
+                className: "nav-link px-lg-3 py-3 py-lg-4",
+                href: "contact.html",
+                children: "Contact"
+              })
+            })]
+          })
+        })]
+      })
+    })
+  );
+};
 
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+var _default = Navigation;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","react/jsx-runtime":"../node_modules/react/jsx-runtime.js"}],"components/pages/feature/BlogsView.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _jsxRuntime = require("react/jsx-runtime");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var BlogsView = function BlogsView() {
+  return (
+    /*#__PURE__*/
+    (0, _jsxRuntime.jsx)("div", {
+      className: "container px-4 px-lg-5",
+      children:
+      /*#__PURE__*/
+      (0, _jsxRuntime.jsx)("div", {
+        className: "row gx-4 gx-lg-5 justify-content-center",
+        children:
+        /*#__PURE__*/
+        (0, _jsxRuntime.jsxs)("div", {
+          className: "col-md-10 col-lg-8 col-xl-7",
+          children: [
+          /*#__PURE__*/
+          (0, _jsxRuntime.jsxs)("div", {
+            className: "post-preview",
+            children: [
+            /*#__PURE__*/
+            (0, _jsxRuntime.jsxs)("a", {
+              href: "post.html",
+              children: [
+              /*#__PURE__*/
+              (0, _jsxRuntime.jsx)("h2", {
+                className: "post-title",
+                children: "Man must explore, and this is exploration at its greatest"
+              }),
+              /*#__PURE__*/
+              (0, _jsxRuntime.jsx)("h3", {
+                className: "post-subtitle",
+                children: "Problems look mighty small from 150 miles up"
+              })]
+            }),
+            /*#__PURE__*/
+            (0, _jsxRuntime.jsxs)("p", {
+              className: "post-meta",
+              children: ["Posted by",
+              /*#__PURE__*/
+              (0, _jsxRuntime.jsx)("a", {
+                href: "#!",
+                children: "Start Bootstrap"
+              }), "on September 24, 2022"]
+            })]
+          }),
+          /*#__PURE__*/
+          (0, _jsxRuntime.jsx)("hr", {
+            className: "my-4"
+          }),
+          /*#__PURE__*/
+          (0, _jsxRuntime.jsxs)("div", {
+            className: "post-preview",
+            children: [
+            /*#__PURE__*/
+            (0, _jsxRuntime.jsx)("a", {
+              href: "post.html",
+              children:
+              /*#__PURE__*/
+              (0, _jsxRuntime.jsx)("h2", {
+                className: "post-title",
+                children: "I believe every human has a finite number of heartbeats. I dont intend to waste any of mine."
+              })
+            }),
+            /*#__PURE__*/
+            (0, _jsxRuntime.jsxs)("p", {
+              className: "post-meta",
+              children: ["Posted by",
+              /*#__PURE__*/
+              (0, _jsxRuntime.jsx)("a", {
+                href: "#!",
+                children: "Start Bootstrap"
+              }), "on September 18, 2022"]
+            })]
+          }),
+          /*#__PURE__*/
+          (0, _jsxRuntime.jsx)("hr", {
+            className: "my-4"
+          }),
+          /*#__PURE__*/
+          (0, _jsxRuntime.jsxs)("div", {
+            className: "post-preview",
+            children: [
+            /*#__PURE__*/
+            (0, _jsxRuntime.jsxs)("a", {
+              href: "post.html",
+              children: [
+              /*#__PURE__*/
+              (0, _jsxRuntime.jsx)("h2", {
+                className: "post-title",
+                children: "Science has not yet mastered prophecy"
+              }),
+              /*#__PURE__*/
+              (0, _jsxRuntime.jsx)("h3", {
+                className: "post-subtitle",
+                children: "We predict too much for the next year and yet far too little for the next ten."
+              })]
+            }),
+            /*#__PURE__*/
+            (0, _jsxRuntime.jsxs)("p", {
+              className: "post-meta",
+              children: ["Posted by",
+              /*#__PURE__*/
+              (0, _jsxRuntime.jsx)("a", {
+                href: "#!",
+                children: "Start Bootstrap"
+              }), "on August 24, 2022"]
+            })]
+          }),
+          /*#__PURE__*/
+          (0, _jsxRuntime.jsx)("hr", {
+            className: "my-4"
+          }),
+          /*#__PURE__*/
+          (0, _jsxRuntime.jsxs)("div", {
+            className: "post-preview",
+            children: [
+            /*#__PURE__*/
+            (0, _jsxRuntime.jsxs)("a", {
+              href: "post.html",
+              children: [
+              /*#__PURE__*/
+              (0, _jsxRuntime.jsx)("h2", {
+                className: "post-title",
+                children: "Failure is not an option"
+              }),
+              /*#__PURE__*/
+              (0, _jsxRuntime.jsx)("h3", {
+                className: "post-subtitle",
+                children: "Many say exploration is part of our destiny, but it\u2019s actually our duty to future generations."
+              })]
+            }),
+            /*#__PURE__*/
+            (0, _jsxRuntime.jsxs)("p", {
+              className: "post-meta",
+              children: ["Posted by",
+              /*#__PURE__*/
+              (0, _jsxRuntime.jsx)("a", {
+                href: "#!",
+                children: "Start Bootstrap"
+              }), "on July 8, 2022"]
+            })]
+          }),
+          /*#__PURE__*/
+          (0, _jsxRuntime.jsx)("hr", {
+            className: "my-4"
+          }),
+          /*#__PURE__*/
+          (0, _jsxRuntime.jsx)("div", {
+            className: "d-flex justify-content-end mb-4",
+            children:
+            /*#__PURE__*/
+            (0, _jsxRuntime.jsx)("a", {
+              className: "btn btn-primary text-uppercase",
+              href: "#!",
+              children: "Older Posts \u2192"
+            })
+          })]
+        })
+      })
+    })
+  );
+};
+
+var _default = BlogsView;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","react/jsx-runtime":"../node_modules/react/jsx-runtime.js"}],"public/assets/img/home-bg.jpg":[function(require,module,exports) {
+module.exports = "/home-bg.a7d05534.jpg";
+},{}],"components/pages/feature/Header.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _homeBg = _interopRequireDefault(require("../../../public/assets/img/home-bg.jpg"));
+
+var _jsxRuntime = require("react/jsx-runtime");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// relative path to image
+var Header = function Header() {
+  return (
+    /*#__PURE__*/
+    (0, _jsxRuntime.jsx)("header", {
+      className: "masthead",
+      style: {
+        backgroundImage: "url(\"".concat(_homeBg.default, "\")")
+      },
+      children:
+      /*#__PURE__*/
+      (0, _jsxRuntime.jsx)("div", {
+        className: "container position-relative px-4 px-lg-5",
+        children:
+        /*#__PURE__*/
+        (0, _jsxRuntime.jsx)("div", {
+          className: "row gx-4 gx-lg-5 justify-content-center",
+          children:
+          /*#__PURE__*/
+          (0, _jsxRuntime.jsx)("div", {
+            className: "col-md-10 col-lg-8 col-xl-7",
+            children:
+            /*#__PURE__*/
+            (0, _jsxRuntime.jsxs)("div", {
+              className: "site-heading",
+              children: [
+              /*#__PURE__*/
+              (0, _jsxRuntime.jsx)("h1", {
+                children: "Aymen Sakouhi"
+              }),
+              /*#__PURE__*/
+              (0, _jsxRuntime.jsx)("span", {
+                className: "subheading",
+                children: "Blog by a Front-end Developer"
+              })]
+            })
+          })
+        })
+      })
+    })
+  );
+};
+
+var _default = Header;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","../../../public/assets/img/home-bg.jpg":"public/assets/img/home-bg.jpg","react/jsx-runtime":"../node_modules/react/jsx-runtime.js"}],"hooks/useBlogs.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = require("react");
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator.return && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, catch: function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -34587,30 +34901,223 @@ function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefine
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var App = function App() {
-  var _useState = (0, _react.useState)(false),
+//eslint-disable-next-line no-unused-vars
+var useBlogs = function useBlogs() {
+  var _useState = (0, _react.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
-      showModal = _useState2[0],
-      setShowModal = _useState2[1];
+      blogs = _useState2[0],
+      setBlogs = _useState2[1];
 
+  var _useState3 = (0, _react.useState)("unloaded"),
+      _useState4 = _slicedToArray(_useState3, 2),
+      status = _useState4[0],
+      setStatus = _useState4[1];
+
+  var getBlogs =
+  /*#__PURE__*/
+  function () {
+    var _ref = _asyncToGenerator(
+    /*#__PURE__*/
+    _regeneratorRuntime().mark(function _callee() {
+      var response, json, result;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            setStatus("loading");
+            _context.next = 3;
+            return fetch("/api/blogs", {
+              headers: {
+                "Content-Type": "application/json"
+              }
+            });
+
+          case 3:
+            response = _context.sent;
+            _context.next = 6;
+            return response.json();
+
+          case 6:
+            json = _context.sent;
+            result = json || [];
+
+            if (result.length) {
+              setBlogs(result);
+              setStatus("loaded");
+            }
+
+          case 9:
+          case "end":
+            return _context.stop();
+        }
+      }, _callee);
+    }));
+
+    return function getBlogs() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
+  (0, _react.useEffect)(function () {
+    getBlogs();
+  }, []);
+  return [status, blogs];
+};
+
+var _default = useBlogs;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js"}],"components/pages/main/HomePage.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _Footer = _interopRequireDefault(require("../../shared/Footer"));
+
+var _Navigation = _interopRequireDefault(require("../../shared/Navigation"));
+
+var _BlogsView = _interopRequireDefault(require("../feature/BlogsView"));
+
+var _Header = _interopRequireDefault(require("../feature/Header"));
+
+var _useBlogs3 = _interopRequireDefault(require("../../../hooks/useBlogs"));
+
+var _jsxRuntime = require("react/jsx-runtime");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var HomePage = function HomePage() {
+  var _useBlogs = (0, _useBlogs3.default)(),
+      _useBlogs2 = _slicedToArray(_useBlogs, 2),
+      status = _useBlogs2[0],
+      blogs = _useBlogs2[1];
+
+  console.log(status, blogs);
   return (
     /*#__PURE__*/
-    (0, _jsxRuntime.jsxs)("div", {
+    (0, _jsxRuntime.jsxs)(_jsxRuntime.Fragment, {
       children: [
       /*#__PURE__*/
-      (0, _jsxRuntime.jsx)("h1", {
-        children: "Hello world"
-      }),
+      (0, _jsxRuntime.jsx)(_Navigation.default, {}),
       /*#__PURE__*/
-      (0, _jsxRuntime.jsx)(_NavMenu.default, {
-        changeTheStateOfSomething: function changeTheStateOfSomething(val) {
-          setShowModal(!val);
-        }
-      }), showModal &&
+      (0, _jsxRuntime.jsx)(_Header.default, {}),
       /*#__PURE__*/
-      (0, _reactDom.createPortal)(
+      (0, _jsxRuntime.jsx)(_BlogsView.default, {}),
       /*#__PURE__*/
-      (0, _jsxRuntime.jsx)(_WeirdComponent.default, {}), document.getElementById("modal"))]
+      (0, _jsxRuntime.jsx)(_Footer.default, {})]
+    })
+  );
+};
+
+var _default = HomePage;
+exports.default = _default;
+},{"../../shared/Footer":"components/shared/Footer.js","../../shared/Navigation":"components/shared/Navigation.js","../feature/BlogsView":"components/pages/feature/BlogsView.js","../feature/Header":"components/pages/feature/Header.js","../../../hooks/useBlogs":"hooks/useBlogs.js","react/jsx-runtime":"../node_modules/react/jsx-runtime.js"}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"style.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"App.js":[function(require,module,exports) {
+"use strict";
+
+var _react = _interopRequireDefault(require("react"));
+
+var _client = require("react-dom/client");
+
+var _HomePage = _interopRequireDefault(require("./components/pages/main/HomePage"));
+
+require("./style.css");
+
+var _jsxRuntime = require("react/jsx-runtime");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var App = function App() {
+  return (
+    /*#__PURE__*/
+    (0, _jsxRuntime.jsx)("div", {
+      children:
+      /*#__PURE__*/
+      (0, _jsxRuntime.jsx)(_HomePage.default, {})
     })
   );
 };
@@ -34619,7 +35126,7 @@ var root = (0, _client.createRoot)(document.getElementById("root"));
 root.render(
 /*#__PURE__*/
 (0, _jsxRuntime.jsx)(App, {}));
-},{"react":"../node_modules/react/index.js","react-dom/client":"../node_modules/react-dom/client.js","react-dom":"../node_modules/react-dom/index.js","./Components/sharedComponents/NavMenu":"Components/sharedComponents/NavMenu.js","./Components/sharedComponents/WeirdComponent":"Components/sharedComponents/WeirdComponent.js","react/jsx-runtime":"../node_modules/react/jsx-runtime.js"}],"../node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom/client":"../node_modules/react-dom/client.js","./components/pages/main/HomePage":"components/pages/main/HomePage.js","./style.css":"style.css","react/jsx-runtime":"../node_modules/react/jsx-runtime.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -34647,7 +35154,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58049" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52917" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -34822,5 +35329,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../node_modules/parcel/src/builtins/hmr-runtime.js","App.js"], null)
+},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","App.js"], null)
 //# sourceMappingURL=/App.d36a57b6.js.map
