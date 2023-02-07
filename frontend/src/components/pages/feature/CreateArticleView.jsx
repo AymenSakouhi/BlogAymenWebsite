@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import { ClassicEditor } from "@ckeditor/ckeditor5-build-classic";
+import MyCkeditor from "./MyCkeditor";
 
-const CreateArticleView = () => {
+const CreateArticleView = ({ getStatePost }) => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -75,22 +78,12 @@ const CreateArticleView = () => {
                   A snippet is required.
                 </div>
               </div>
-              <div className="form-floating">
-                <textarea
-                  value={body}
-                  className="form-control"
-                  id="body"
-                  placeholder="Enter your body here..."
-                  style={{ height: "12rem" }}
-                  data-sb-validations="required"
-                  onBlur={(e) => {
-                    setBody(e.target.value);
-                  }}
-                  onChange={(e) => {
-                    setBody(e.target.value);
+              <div className="mt-5">
+                <MyCkeditor
+                  getPostData={(value) => {
+                    setBody(value);
                   }}
                 />
-                <label htmlFor="body">Body</label>
                 <div
                   className="invalid-feedback"
                   data-sb-feedback="body:required"

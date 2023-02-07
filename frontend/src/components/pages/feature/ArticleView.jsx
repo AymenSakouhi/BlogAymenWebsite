@@ -1,12 +1,33 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 
 const ArticleView = () => {
+  const { id } = useParams();
+  console.log(id);
+  const getPost = async () => {
+    const post = { title, body, snippet };
+    const response = await fetch(`/api/blogs/article/${id}`, {});
+
+    const json = await response.json();
+    const result = json || {};
+    navigate("/");
+  };
   return (
     <article className="mb-4">
       <div className="container px-4 px-lg-5">
         <div className="row gx-4 gx-lg-5 justify-content-center">
-          <div className="col-md-10 col-lg-8 col-xl-7">
-            <p>
+          <div className="col-md-10 col-lg-8 col-xl-7"></div>
+        </div>
+      </div>
+    </article>
+  );
+};
+
+export default ArticleView;
+
+//TO return to laters
+{
+  /* <p>
               Never in all their history have men been able truly to conceive of
               the world as one: a single sphere, a globe, having the qualities
               of a globe, a round earth in which all the directions eventually
@@ -97,12 +118,5 @@ const ArticleView = () => {
               <a href="https://www.flickr.com/photos/nasacommons/">
                 NASA on The Commons
               </a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </article>
-  );
-};
-
-export default ArticleView;
+            </p> */
+}
