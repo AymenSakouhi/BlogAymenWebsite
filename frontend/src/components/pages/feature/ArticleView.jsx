@@ -1,22 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import parse from "html-react-parser";
+import DOMPurify from "dompurify";
 
 const ArticleView = () => {
+  const htmlFrom = (htmlString) => {
+    const cleanHtmlString = DOMPurify.sanitize(htmlString, {
+      USE_PROFILES: { html: true },
+    });
+    const html = parse(cleanHtmlString);
+    return html;
+  };
   const { id } = useParams();
-  console.log(id);
+  const [article, setArticle] = useState(null);
   const getPost = async () => {
-    const post = { title, body, snippet };
-    const response = await fetch(`/api/blogs/article/${id}`, {});
-
+    const response = await fetch(`/api/blogs/article/${id}`);
     const json = await response.json();
     const result = json || {};
-    navigate("/");
+    setArticle(result);
   };
+  useEffect(() => {
+    getPost();
+  }, []);
+
   return (
     <article className="mb-4">
       <div className="container px-4 px-lg-5">
         <div className="row gx-4 gx-lg-5 justify-content-center">
-          <div className="col-md-10 col-lg-8 col-xl-7"></div>
+          <div className="col-md-10 col-lg-8 col-xl-7">
+            {article && htmlFrom(article.body)}
+          </div>
         </div>
       </div>
     </article>

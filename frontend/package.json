@@ -11,6 +11,8 @@
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^36.0.0",
     "@ckeditor/ckeditor5-react": "^5.0.6",
+    "dompurify": "^2.4.3",
+    "html-react-parser": "^3.0.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.1"

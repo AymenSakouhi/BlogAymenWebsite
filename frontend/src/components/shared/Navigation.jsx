@@ -5,9 +5,9 @@ const Navigation = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light" id="mainNav">
       <div className="container px-4 px-lg-5">
-        <a className="navbar-brand" href="index.html">
+        <Link className="navbar-brand" to="/">
           My Blog
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"

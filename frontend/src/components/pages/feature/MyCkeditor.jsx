@@ -9,6 +9,11 @@ const MyCkeditor = ({ getPostData }) => {
       <CKEditor
         editor={ClassicEditor}
         data="<p>Write here</p>"
+        config={{
+          ckfinder: {
+            uploadUrl: "/api/blogs/upload",
+          },
+        }}
         onReady={(editor) => {
           // You can store the "editor" and use when it is needed.
           console.log("Editor is ready to use!", editor);
