@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-// import Editor from "../../../../ckeditor5/src/ckeditor";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+// import Editor from "ckeditor5-custom-build/build/ckeditor";
 
 const MyCkeditor = ({ getPostData }) => {
   return (
@@ -10,6 +10,25 @@ const MyCkeditor = ({ getPostData }) => {
         editor={ClassicEditor}
         data="<p>Write here</p>"
         config={{
+          toolbar: [
+            "heading",
+            "|",
+            "bold",
+            "italic",
+            "link",
+            "bulletedList",
+            "numberedList",
+            "|",
+            "outdent",
+            "indent",
+            "|",
+            "imageUpload",
+            "blockQuote",
+            "insertTable",
+            "mediaEmbed",
+            "undo",
+            "redo",
+          ],
           ckfinder: {
             uploadUrl: "/api/blogs/upload",
           },
